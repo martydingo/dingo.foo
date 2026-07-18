@@ -1,1 +1,150 @@
 @import "tailwindcss";
+@import "./typeset.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+.typeset-docs {
+  --typeset-font-body: var(--font-titillium-web);
+  --typeset-font-heading: var(--font-bai-jamjuree);
+  --typeset-font-mono: var(--font-jetbrains-mono);
+  --typeset-size: 14px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
+
+/*
+  Halcyon — shadcn/ui theme
+  Tailwind v4 setup: drop this into your globals.css (replacing the existing
+  :root / @theme inline blocks from the shadcn init, or merging with them).
+  Tailwind v3 setup: keep the :root block below and make sure your
+  tailwind.config.js `theme.extend.colors` maps each token to `var(--token)`
+  (the standard shadcn config already does this for you).
+*/
+
+:root {
+  --radius: 0.625rem;
+
+  /* Base surfaces */
+  --background: #171c28;
+  /* Background_1 */
+  --foreground: #d7dce2;
+  /* White */
+
+  --card: #1d2433;
+  /* Background_2 */
+  --card-foreground: #d7dce2;
+
+  --popover: #1d2433;
+  /* Background_2 */
+  --popover-foreground: #d7dce2;
+
+  /* Brand */
+  --primary: #ffcc66;
+  /* Accent */
+  --primary-foreground: #171c28;
+
+  --secondary: #2f3b54;
+  /* Background_3 */
+  --secondary-foreground: #d7dce2;
+
+  --accent: #c3a6ff;
+  /* Purple */
+  --accent-foreground: #171c28;
+
+  /* De-emphasized text / subtle fills */
+  --muted: #2f3b54;
+  /* Background_3 */
+  --muted-foreground: #a2aabc;
+  /* Grey/Muted */
+
+  /* State */
+  --destructive: #ef6b73;
+  /* Red */
+  --destructive-foreground: #171c28;
+
+  /* Structural */
+  --border: #2f3b54;
+  /* Background_3 */
+  --input: #2f3b54;
+  /* Background_3 */
+  --ring: #ffcc66;
+  /* Accent, for focus rings */
+
+  /* Charts */
+  --chart-1: #5ccfe6;
+  /* Aqua */
+  --chart-2: #bae67e;
+  /* Green */
+  --chart-3: #ffae57;
+  /* Orange */
+  --chart-4: #c3a6ff;
+  /* Purple */
+  --chart-5: #ffd580;
+  /* Yellow */
+
+  /* Sidebar (if using the shadcn sidebar component) */
+  --sidebar: #1d2433;
+  /* Background_2 */
+  --sidebar-foreground: #d7dce2;
+  --sidebar-primary: #ffcc66;
+  --sidebar-primary-foreground: #171c28;
+  --sidebar-accent: #2f3b54;
+  --sidebar-accent-foreground: #d7dce2;
+  --sidebar-border: #2f3b54;
+  --sidebar-ring: #ffcc66;
+}
+
+/* Tailwind v4: map the raw vars above to Tailwind's color namespace */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
