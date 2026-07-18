@@ -24,7 +24,7 @@ export default function NavBar() {
                     <NavigationMenuItem>
                         <NavigationMenuTrigger>Site Navigation</NavigationMenuTrigger>
                         <NavigationMenuContent>
-                            <NavigationMenuLink>
+                            <NavigationMenuLink render={<Link href="/projects" />}>
                                 <div className="w-72 typeset typeset-docs">
                                     <h3 className="font-bold">Projects</h3>
                                     <p className="font-titillium-web">A collection of things I've created, written, contributed to, or worked on.</p>

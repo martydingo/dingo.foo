@@ -2,24 +2,32 @@ import sharp from 'sharp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { buildConfig } from 'payload'
+import Projects from './collections/Projects/Projects'
+import Users from './collections/Users/Users'
+import Images from './collections/SiteMedia/Images/Images'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 export default buildConfig({
-    // If you'd like to use Rich Text, pass your editor here
-    editor: lexicalEditor(),
-
-    // Define and configure your collections in this array
-    collections: [],
-
-    // Your Payload secret - should be a complex and secure string, unguessable
-    secret: process.env.PAYLOAD_SECRET || '',
+    collections: [
+        Projects,
+        Images,
+        Users
+    ],
     db: vercelPostgresAdapter({
         pool: {
             connectionString: process.env.POSTGRES_URL || '',
         },
     }),
-    // If you want to resize images, crop, set focal point, etc.
-    // make sure to install it and pass it to the config.
-    // This is optional - if you don't need to do these things,
-    // you don't need it!
+    editor: lexicalEditor({}),
+    plugins: [
+        vercelBlobStorage({
+            enabled: true,
+            collections: {
+                images: true,
+            },
+            token: process.env.BLOB_READ_WRITE_TOKEN || '',
+        }),
+    ],
+    secret: process.env.PAYLOAD_SECRET || '',
     sharp,
 })

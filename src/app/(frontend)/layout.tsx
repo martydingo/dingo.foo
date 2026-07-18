@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", baiJamjuree.variable, titiliumWeb.variable, jetbrainsMono.variable)}
+      className={cn("min-h-screen antialiased", baiJamjuree.variable, titiliumWeb.variable, jetbrainsMono.variable)}
     >
-      <body className="min-h-full bg-linear-to-t from-secondary to-35% to-background">
+      <body className="min-h-full bg-linear-to-t from-sidebar to-35% to-background">
         <NavBar />
         {children}
       </body>
