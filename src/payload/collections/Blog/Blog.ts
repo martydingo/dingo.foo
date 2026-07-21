@@ -1,14 +1,14 @@
 import { CollectionConfig } from "payload";
 import { slugify } from "payload/shared";
 
-const Projects: CollectionConfig = {
-    slug: "projects",
-    labels: {
-        singular: "Project",
-        plural: "Projects"
-    },
+const Blog: CollectionConfig = {
+    slug: "blog",
     admin: {
         group: "Content"
+    },
+    labels: {
+        singular: "Blog Post",
+        plural: "Blog Posts"
     },
     fields: [
         {
@@ -57,4 +57,4 @@ const Projects: CollectionConfig = {
     },
 }
 
-export default Projects
+export default Blog

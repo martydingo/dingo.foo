@@ -24,6 +24,7 @@ const Images: CollectionConfig = {
                 // Optional: hide it from the edit form since it's derived from title
                 readOnly: true,
                 position: "sidebar",
+                hidden: true
             },
         },
         {

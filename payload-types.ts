@@ -67,6 +67,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    blog: Blog;
     projects: Project;
     images: Image;
     users: User;
@@ -77,6 +78,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    blog: BlogSelect<false> | BlogSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     images: ImagesSelect<false> | ImagesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -121,9 +123,9 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects".
+ * via the `definition` "blog".
  */
-export interface Project {
+export interface Blog {
   id: string;
   title?: string | null;
   date?: string | null;
@@ -164,6 +166,33 @@ export interface Image {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: string;
+  title?: string | null;
+  date?: string | null;
+  image?: (string | null) | Image;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -215,6 +244,10 @@ export interface PayloadKv {
 export interface PayloadLockedDocument {
   id: number;
   document?:
+    | ({
+        relationTo: 'blog';
+        value: string | Blog;
+      } | null)
     | ({
         relationTo: 'projects';
         value: string | Project;
@@ -268,6 +301,19 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog_select".
+ */
+export interface BlogSelect<T extends boolean = true> {
+  id?: T;
+  title?: T;
+  date?: T;
+  image?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

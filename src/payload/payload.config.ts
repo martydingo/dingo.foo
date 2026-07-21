@@ -1,14 +1,17 @@
 import sharp from 'sharp'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, BlocksFeature, CodeBlock } from '@payloadcms/richtext-lexical'
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { buildConfig } from 'payload'
 import Projects from './collections/Projects/Projects'
 import Users from './collections/Users/Users'
 import Images from './collections/SiteMedia/Images/Images'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import Blog from './collections/Blog/Blog'
+
 
 export default buildConfig({
     collections: [
+        Blog,
         Projects,
         Images,
         Users
@@ -18,7 +21,16 @@ export default buildConfig({
             connectionString: process.env.POSTGRES_URL || '',
         },
     }),
-    editor: lexicalEditor({}),
+    editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+            ...defaultFeatures,
+            BlocksFeature({
+                blocks: [
+                    CodeBlock({ languages: { "mermaid": "mermaid" } })
+                ]
+            })
+        ]
+    }),
     plugins: [
         vercelBlobStorage({
             enabled: true,

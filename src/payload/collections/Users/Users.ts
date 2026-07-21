@@ -5,6 +5,7 @@ const Users: CollectionConfig = {
     auth: true, // Enables authentication for the Admin Panel
     admin: {
         useAsTitle: 'name',
+        group: "Users"
     },
     fields: [
         {

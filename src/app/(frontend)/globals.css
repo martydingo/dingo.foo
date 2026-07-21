@@ -24,6 +24,10 @@
 */
 
 :root {
+  --font-sans: var(--font-titillium-web);
+  --font-serif: var(--font-bai-jamjuree);
+  --font-mono: var(--font-jetbrains-mono);
+
   --radius: 0.625rem;
 
   /* Base surfaces */

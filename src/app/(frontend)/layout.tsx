@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Titillium_Web, Bai_Jamjuree, JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
-import NavBar from "@/components/NavBar/NavBar";
+import NavBar from "@/components/NavBar";
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ['latin'], variable: '--font-bai-jamjuree', weight: ["200", "300", "400", "500", "600", "700"]
