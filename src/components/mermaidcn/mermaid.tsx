@@ -9,12 +9,20 @@ import elkLayouts from '@mermaid-js/layout-elk';
  * -----------------------------------------------------------------------------------------------*/
 
 export type MermaidBuiltinTheme =
-  | "default"
-  | "dark"
-  | "forest"
-  | "neutral"
-  | "base";
-export type MermaidTheme = MermaidBuiltinTheme | MermaidCustomTheme;
+  "default" |
+  "dark" |
+  "forest" |
+  "neutral" |
+  "base" |
+  "neo" |
+  "neo-dark" |
+  "redux" |
+  "redux-dark" |
+  "redux-color" |
+  "redux-dark-color" |
+  "null" |
+  undefined
+export type MermaidTheme = MermaidBuiltinTheme;
 
 const BUILTIN_THEMES = new Set<string>([
   "default",
@@ -22,12 +30,18 @@ const BUILTIN_THEMES = new Set<string>([
   "forest",
   "neutral",
   "base",
+  "neo",
+  "neo-dark",
+  "redux",
+  "redux-dark",
+  "redux-color",
+  "redux-dark-color",
 ]);
 
 export interface MermaidConfig {
   theme?: MermaidTheme;
   darkMode?: boolean;
-  look?: "classic" | "handdrawn";
+  look?: "classic" | "handDrawn" | "neo" | undefined;
   themeVariables?: Record<string, string>;
   flowchart?: {
     curve?: "linear" | "cardinal";
@@ -140,7 +154,7 @@ function useMermaid({
           startOnLoad: false,
           theme: resolvedMermaidTheme,
           themeVariables: resolvedThemeVars,
-          look: parsedConfig.look === "handdrawn" ? "handDrawn" : "classic",
+          look: parsedConfig.look ?? "classic",
           flowchart: {
             htmlLabels: parsedConfig.flowchart?.htmlLabels ?? true,
             ...(parsedConfig.flowchart?.padding != null
@@ -148,10 +162,11 @@ function useMermaid({
               : {}),
           },
           sequence: parsedConfig.sequence,
-          fontFamily: parsedConfig.fontFamily ?? "Inter, sans-serif",
+          fontFamily: parsedConfig.fontFamily ?? "monospace, sans-serif",
           fontSize: parsedConfig.fontSize ?? 14,
           logLevel: parsedConfig.logLevel ?? "error",
           securityLevel: "loose",
+          ...parsedConfig
         });
 
         // Ensure we have a DOM node for calculation

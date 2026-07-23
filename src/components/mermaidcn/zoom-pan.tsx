@@ -28,7 +28,7 @@ export function ZoomPan({
   imageSrc,
   children,
   minScale = 0.1,
-  maxScale = 5,
+  maxScale = 12,
   initialScale = 1,
   zoomStep = 0.1,
   className = "",

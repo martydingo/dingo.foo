@@ -55,13 +55,13 @@ export function MermaidPreview({
         img.crossOrigin = "anonymous";
         img.onload = () => {
             const canvas = document.createElement("canvas");
-            const scale = 2;
+            const scale = 4;
             canvas.width = img.naturalWidth * scale;
             canvas.height = img.naturalHeight * scale;
             const ctx = canvas.getContext("2d");
             if (ctx) {
                 ctx.scale(scale, scale);
-                ctx.fillStyle = "#ffffff";
+                ctx.fillStyle = "#ffffff00";
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, 0, 0);
                 canvas.toBlob((blob) => {
@@ -169,7 +169,7 @@ export function MermaidPreview({
                             <DownloadIcon className="h-3 w-3" />
                             <span className="sr-only">Export SVG</span>
                         </Button>
-                        <Button
+                        {/* <Button
                             variant="ghost"
                             className="h-6 px-2 text-xs"
                             onClick={handleExportPng}
@@ -177,7 +177,7 @@ export function MermaidPreview({
                             title="Export PNG"
                         >
                             PNG
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
             )}

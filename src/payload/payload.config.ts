@@ -1,5 +1,5 @@
 import sharp from 'sharp'
-import { lexicalEditor, BlocksFeature, CodeBlock } from '@payloadcms/richtext-lexical'
+import { lexicalEditor, BlocksFeature, CodeBlock, EXPERIMENTAL_TableFeature } from '@payloadcms/richtext-lexical'
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { buildConfig } from 'payload'
 import Projects from './collections/Projects/Projects'
@@ -7,6 +7,7 @@ import Users from './collections/Users/Users'
 import Images from './collections/SiteMedia/Images/Images'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import Blog from './collections/Blog/Blog'
+import MermaidBlock from './blocks/MermaidBlock'
 
 
 export default buildConfig({
@@ -26,9 +27,11 @@ export default buildConfig({
             ...defaultFeatures,
             BlocksFeature({
                 blocks: [
-                    CodeBlock({ languages: { "mermaid": "mermaid" } })
+                    CodeBlock({ languages: { "mermaid": "mermaid" } }),
+                    MermaidBlock
                 ]
-            })
+            }),
+            EXPERIMENTAL_TableFeature()
         ]
     }),
     plugins: [

@@ -8,14 +8,15 @@ import NextImage from 'next/image';
 import { Spotlight } from '@/components/ui/spotlight-new';
 import { Backlight } from '@/components/ui/backlight';
 import htmlConverters from '@/payload/converters/htmlConverters';
-
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MermaidPreview } from '@/components/mermaidcn/mermaid-preview';
 import { Mermaid } from '@/components/mermaidcn/mermaid';
+import Content from '@/components/Content';
 
 export default function BlogPost({ blog }: { blog: Blog }) {
-    const blogContentHtml = convertLexicalToHTML({ data: blog.content!, converters: htmlConverters })
+    // const blogContentHtml = convertLexicalToHTML({ data: blog.content!, converters: htmlConverters })
     const blogImage = blog.image as Image
     const [svg, setSvg] = useState("")
     useEffect(() => {
@@ -40,7 +41,8 @@ export default function BlogPost({ blog }: { blog: Blog }) {
                     <p>Authored {new Date(blog.createdAt!).toLocaleDateString()}</p>
                 </div>
             </div>
-            <div className='max-w-2xl md:max-w-5xl mx-auto' dangerouslySetInnerHTML={{ "__html": blogContentHtml }} />
+            <Content content={blog.content!} />
+            {/* <div className='max-w-2xl md:max-w-5xl mx-auto' dangerouslySetInnerHTML={{ "__html": blogContentHtml }} /> */}
             {/* <ProgressiveBlur className='fixed rounded-t-full' height="16%" position="bottom" /> */}
         </article>
     )
