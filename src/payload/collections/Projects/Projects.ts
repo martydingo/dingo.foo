@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { slugify } from "payload/shared";
+import { array, slugify } from "payload/shared";
 
 const Projects: CollectionConfig = {
     slug: "projects",
@@ -38,6 +38,28 @@ const Projects: CollectionConfig = {
             label: "Image",
             type: "upload",
             relationTo: "images"
+        },
+        {
+            name: "category",
+            label: "Category",
+            type: "text"
+        },
+        {
+            name: "summary",
+            label: "Summary",
+            type: "textarea"
+        },
+        {
+            name: "icons",
+            label: "Icons",
+            type: "array",
+            fields: [
+                {
+                    name: "icon",
+                    label: "Icon Name",
+                    type: "text"
+                }
+            ]
         },
         {
             name: "content",

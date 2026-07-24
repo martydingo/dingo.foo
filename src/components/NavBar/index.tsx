@@ -35,48 +35,52 @@ const siteNavLinks: { href: string, title: string, description: string }[] = [
     }
 ]
 
-export default function NavBar() {
+export default function NavBar({ siteLogoUri }: { siteLogoUri?: string }) {
     return (
-        <div className="w-full px-8 mt-4 h-16">
+        <div className="w-full px-8 mt-4 h-16 flex justify-center xl:justify-start">
             <NavigationMenu>
-                <Link href="/" className="flex items-center gap-2 mr-8">
-                    <Image src="/logo.png" height={64} width={64} alt="dingo.foo site logo" />
-                    <p className="font-bai-jamjuree tracking-wider text-2xl">dingo.foo</p>
-                </Link>
-                <NavigationMenuList className="mt-1 font-bai-jamjuree">
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-md">Site Navigation</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            {
-                                siteNavLinks.map((siteNavLink, index) =>
-                                    <>
-                                        <NavigationMenuLink render={<Link href={siteNavLink.href} />}>
-                                            <div className="w-72">
-                                                <h3 className="font-serif font-semibold pb-2 text-base">{siteNavLink.title}</h3>
-                                                <p className="font-jetbrains-mono indent-2 text-sm">{siteNavLink.description}</p>
-                                            </div>
-                                        </NavigationMenuLink>
-                                        {index < siteNavLinks.length - 1 && <Separator />}
-                                    </>
-                                )
-                            }
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger className="text-md">Applications</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <NavigationMenuLink render={<Link href="https://j2live.dingo.foo" />}>
-                                <div className="flex items-center justify-around gap-4">
-                                    <div className="flex flex-col w-72">
-                                        <h3 className="font-bold">J2Live</h3>
-                                        <p className="font-titillium-web">J2Live is a web-based application that allows users to edit and render Jinja2 templates using YAML variables in real-time, using the Ansible templating engine.</p>
+                <div className="w-full flex justify-center gap-8">
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="w-16">
+                            <Image src={siteLogoUri!} height={64} width={64} alt="dingo.foo site logo" />
+                        </div>
+                        <p className="font-bai-jamjuree tracking-wider text-2xl hidden lg:block">dingo.foo</p>
+                    </Link>
+                    <NavigationMenuList className="mt-1 font-bai-jamjuree">
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger className="text-sm">Site Navigation</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                {
+                                    siteNavLinks.map((siteNavLink, index) =>
+                                        <div key={siteNavLink.title.toLowerCase()}>
+                                            <NavigationMenuLink render={<Link href={siteNavLink.href} />} >
+                                                <div className="w-72">
+                                                    <h3 className="font-serif font-semibold pb-2 text-base">{siteNavLink.title}</h3>
+                                                    <p className="font-titillium-web indent-2 text-sm">{siteNavLink.description}</p>
+                                                </div>
+                                            </NavigationMenuLink>
+                                            {index < siteNavLinks.length - 1 && <Separator />}
+                                        </div>
+                                    )
+                                }
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger className="text-sm">Applications</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <NavigationMenuLink render={<Link href="https://j2live.dingo.foo" />} key="j2live">
+                                    <div className="flex items-center justify-around gap-4">
+                                        <div className="flex flex-col w-72">
+                                            <h3 className="font-serif font-semibold pb-2 text-base">J2Live</h3>
+                                            <p className="font-titillium-web indent-2 text-sm">J2Live is a web-based application that allows users to edit and render Jinja2 templates using YAML variables in real-time, using the Ansible templating engine.</p>
+                                        </div>
+                                        <Image loading="eager" src="/j2live_logo_square_halcyon.svg" height={96} width={96} alt="j2live logo" className="self-center mt-1" />
                                     </div>
-                                    <Image loading="eager" src="/j2live_logo_square_halcyon.svg" height={96} width={96} alt="j2live logo" className="self-center mt-1" />
-                                </div>
-                            </NavigationMenuLink>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                </NavigationMenuList>
+                                </NavigationMenuLink>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </div>
             </NavigationMenu>
         </div >
     )

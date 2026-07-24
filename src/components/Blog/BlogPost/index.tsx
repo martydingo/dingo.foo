@@ -34,7 +34,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
         <article className='typeset typeset-docs mt-8'>
             <Spotlight />
             {/* <NextImage loading='eager' className={`mx-auto`} src={blogImage.url!} height={blogImage.height!} width={blogImage.width!} alt={blogImage['alt-text']} /> */}
-            <div className='mb-16'>
+            <div>
                 <h1 className='text-center text-4xl'>{blog.title}</h1>
                 <div className='flex justify-evenly'>
                     <p>Created {new Date(blog.date!).toLocaleDateString()}</p>

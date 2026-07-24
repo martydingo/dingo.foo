@@ -40,6 +40,28 @@ const Blog: CollectionConfig = {
             relationTo: "images"
         },
         {
+            name: "category",
+            label: "Category",
+            type: "text"
+        },
+        {
+            name: "summary",
+            label: "Summary",
+            type: "textarea"
+        },
+        {
+            name: "icons",
+            label: "Icons",
+            type: "array",
+            fields: [
+                {
+                    name: "icon",
+                    label: "Icon Name",
+                    type: "text"
+                }
+            ]
+        },
+        {
             name: "content",
             label: "Content",
             type: "richText"

@@ -1,9 +1,22 @@
-export default function Home() {
-  return (
-    <div className="">
-      <main>
+import HomeGreeting from "@/components/Home/HomeGreeting";
+import config from '@payload-config'
+import { getPayload } from 'payload'
 
-      </main>
-    </div>
+export default async function Home() {
+  const payload = await getPayload({ config })
+  // const siteContent = []
+  const blogContent = await payload.find({ collection: "blog" })
+  const projectContent = await payload.find({ collection: "projects" })
+  const blogDocs = blogContent.docs.map((blogPost) => { return { ...blogPost, "collection": "blog" } })
+  const projectDocs = projectContent.docs.map((projectPost) => { return { ...projectPost, "collection": "projects" } })
+  const siteContent = [...projectDocs, ...blogDocs]
+  // siteContent.push(projectContent.docs)
+
+  return (
+
+    <main className="h-full">
+      <HomeGreeting siteContent={siteContent} />
+    </main>
+
   );
 }

@@ -8,6 +8,7 @@ import Images from './collections/SiteMedia/Images/Images'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import Blog from './collections/Blog/Blog'
 import MermaidBlock from './blocks/MermaidBlock'
+import HomeConfig from './collections/SiteMedia/Home/Home'
 
 
 export default buildConfig({
@@ -15,7 +16,8 @@ export default buildConfig({
         Blog,
         Projects,
         Images,
-        Users
+        HomeConfig,
+        Users,
     ],
     db: vercelPostgresAdapter({
         pool: {
@@ -25,13 +27,13 @@ export default buildConfig({
     editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
             ...defaultFeatures,
+            EXPERIMENTAL_TableFeature(),
             BlocksFeature({
                 blocks: [
-                    CodeBlock({ languages: { "mermaid": "mermaid" } }),
+                    CodeBlock(),
                     MermaidBlock
                 ]
             }),
-            EXPERIMENTAL_TableFeature()
         ]
     }),
     plugins: [

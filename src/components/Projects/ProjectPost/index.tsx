@@ -15,7 +15,7 @@ export default function ProjectPost({ project }: { project: Project }) {
         <article className='typeset typeset-docs mt-8'>
             <Spotlight />
             {/* <NextImage loading='eager' className={`mx-auto`} src={projectImage.url!} height={projectImage.height!} width={projectImage.width!} alt={projectImage['alt-text']} /> */}
-            <div className='mb-16'>
+            <div>
                 <h1 className='text-center text-4xl'>{project.title}</h1>
                 <div className='flex justify-evenly'>
                     <p>Created {new Date(project.date!).toLocaleDateString()}</p>

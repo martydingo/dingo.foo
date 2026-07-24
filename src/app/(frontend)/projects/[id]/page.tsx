@@ -1,6 +1,7 @@
 import config from '@payload-config'
 import ProjectPost from "@/components/Projects/ProjectPost"
 import { getPayload } from 'payload'
+import Content from '@/components/Content'
 
 export default async function Project({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
@@ -9,7 +10,7 @@ export default async function Project({ params }: { params: Promise<{ id: string
     console.log(project.content)
     return (
         <div className='container mx-auto'>
-            <ProjectPost project={project} />
+            <Content post={project} />
         </div>
     )
 } 

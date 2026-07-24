@@ -1,6 +1,9 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
+import ProjectPost from '@/components/Projects/ProjectPost'
+import { Carousel } from '@/components/ui/apple-cards-carousel'
+import ProjectShowcase from '@/components/Projects/ProjectShowcase'
 
 
 export default async function Projects() {
@@ -8,8 +11,8 @@ export default async function Projects() {
     const projects = await payload.find({ collection: "projects" })
 
     return (
-        <div>
-            {projects.docs.map((project) => <Link href={`/projects/${project.id}`}>{project.title}</Link>)}
+        <div className='max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl mx-auto'>
+            <ProjectShowcase projects={projects.docs} />
         </div>
     )
 }

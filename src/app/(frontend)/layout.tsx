@@ -3,6 +3,8 @@ import "./globals.css";
 import { Titillium_Web, Bai_Jamjuree, JetBrains_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
+import config from '@payload-config'
+import { getPayload } from 'payload'
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ['latin'], variable: '--font-bai-jamjuree', weight: ["200", "300", "400", "500", "600", "700"]
@@ -19,18 +21,22 @@ export const metadata: Metadata = {
   description: "Like foobar, but with more dingo",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const payload = await getPayload({ config })
+  const siteImage = await payload.findByID({ collection: "images", id: "site-logo" })
+  const siteImageUri = siteImage.url
   return (
     <html
       lang="en"
-      className={cn("min-h-screen antialiased", baiJamjuree.variable, titiliumWeb.variable, jetbrainsMono.variable)}
+      className={cn("antialiased h-full min-h-screen", baiJamjuree.variable, titiliumWeb.variable, jetbrainsMono.variable)}
     >
-      <body className="min-h-full bg-linear-to-t from-sidebar to-35% to-background">
-        <NavBar />
+      {/* <body className="bg-linear-to-b from-sidebar from-35% to-background"> */}
+      <body>
+        <NavBar siteLogoUri={siteImageUri || ""} />
         {children}
       </body>
     </html>

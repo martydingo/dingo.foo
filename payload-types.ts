@@ -70,6 +70,7 @@ export interface Config {
     blog: Blog;
     projects: Project;
     images: Image;
+    'home-config': HomeConfig;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -81,6 +82,7 @@ export interface Config {
     blog: BlogSelect<false> | BlogSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     images: ImagesSelect<false> | ImagesSelect<true>;
+    'home-config': HomeConfigSelect<false> | HomeConfigSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -130,6 +132,14 @@ export interface Blog {
   title?: string | null;
   date?: string | null;
   image?: (string | null) | Image;
+  category?: string | null;
+  summary?: string | null;
+  icons?:
+    | {
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   content?: {
     root: {
       type: string;
@@ -176,6 +186,14 @@ export interface Project {
   title?: string | null;
   date?: string | null;
   image?: (string | null) | Image;
+  category?: string | null;
+  summary?: string | null;
+  icons?:
+    | {
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   content?: {
     root: {
       type: string;
@@ -191,6 +209,22 @@ export interface Project {
     };
     [k: string]: unknown;
   } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-config".
+ */
+export interface HomeConfig {
+  id: string;
+  name?: string | null;
+  'hero-messages'?:
+    | {
+        message?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -257,6 +291,10 @@ export interface PayloadLockedDocument {
         value: string | Image;
       } | null)
     | ({
+        relationTo: 'home-config';
+        value: string | HomeConfig;
+      } | null)
+    | ({
         relationTo: 'users';
         value: number | User;
       } | null);
@@ -311,6 +349,14 @@ export interface BlogSelect<T extends boolean = true> {
   title?: T;
   date?: T;
   image?: T;
+  category?: T;
+  summary?: T;
+  icons?:
+    | T
+    | {
+        icon?: T;
+        id?: T;
+      };
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -324,6 +370,14 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   date?: T;
   image?: T;
+  category?: T;
+  summary?: T;
+  icons?:
+    | T
+    | {
+        icon?: T;
+        id?: T;
+      };
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -346,6 +400,22 @@ export interface ImagesSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-config_select".
+ */
+export interface HomeConfigSelect<T extends boolean = true> {
+  id?: T;
+  name?: T;
+  'hero-messages'?:
+    | T
+    | {
+        message?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,21 +1,10 @@
 import { CollectionConfig } from "payload";
 import { slugify } from "payload/shared";
 
-const Images: CollectionConfig = {
-    slug: "images",
-    access: {
-        read: () => true, // Allows Next.js optimizer to publicly read the files
-    },
+const HomeConfig: CollectionConfig = {
+    slug: "home-config",
     admin: {
-        group: "Site Media"
-    },
-    labels: {
-        singular: "Image",
-        plural: "Images"
-    },
-    upload: {
-        disableLocalStorage: true,
-        mimeTypes: ["image/*"]
+        group: "Configuration"
     },
     fields: [
         {
@@ -31,17 +20,28 @@ const Images: CollectionConfig = {
             },
         },
         {
-            name: 'alt-text',
-            label: "Alt Text",
-            type: 'text',
-            required: true
+            name: "name",
+            label: "Name",
+            type: "text"
         },
+        {
+            name: "hero-messages",
+            label: "Home Hero Messages",
+            type: "array",
+            fields: [
+                {
+                    name: "message",
+                    label: "Message",
+                    type: "text",
+                }
+            ]
+        }
     ],
     hooks: {
         beforeValidate: [
             ({ data }) => {
-                if (data?.['alt-text'] && !data.id) {
-                    data.id = slugify(data['alt-text']);
+                if (data?.['name'] && !data.id) {
+                    data.id = slugify(data['name']);
                 }
                 return data;
             },
@@ -49,4 +49,4 @@ const Images: CollectionConfig = {
     },
 }
 
-export default Images
+export default HomeConfig
