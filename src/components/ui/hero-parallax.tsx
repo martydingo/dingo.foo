@@ -107,15 +107,18 @@ export const Header = () => {
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white font-mono">
         An engineer of<br /> all the things
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+      <p className="ml-2 max-w-2xl text-base md:text-xl mt-8">
         Helping to build the backbone of the internet, one commit at a time.
         <br />
-        <span className="ml-2">
-          I've shipped global DNS systems, kept national ISPs running, and written
-          more backend glue than I can count.
+        <span className="ml-4">
+          I've constructed global DNS systems, kept national ISPs running
         </span>
         <br />
-        <span className="ml-2">If it's critical infrastructure, I'm probably obsessed with it.</span>
+        <span className="ml-6">
+          and written more backend glue than I can remember.
+        </span>
+        <br />
+        <span className="ml-10">If it's critical infrastructure, I'm probably obsessed with it.</span>
       </p>
     </div>
   );
