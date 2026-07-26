@@ -134,6 +134,12 @@ export interface Blog {
   image?: (string | null) | Image;
   category?: string | null;
   summary?: string | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   icons?:
     | {
         icon?: string | null;
@@ -191,6 +197,12 @@ export interface Project {
   icons?:
     | {
         icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  tags?:
+    | {
+        tag?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -351,6 +363,12 @@ export interface BlogSelect<T extends boolean = true> {
   image?: T;
   category?: T;
   summary?: T;
+  tags?:
+    | T
+    | {
+        tag?: T;
+        id?: T;
+      };
   icons?:
     | T
     | {
@@ -376,6 +394,12 @@ export interface ProjectsSelect<T extends boolean = true> {
     | T
     | {
         icon?: T;
+        id?: T;
+      };
+  tags?:
+    | T
+    | {
+        tag?: T;
         id?: T;
       };
   content?: T;

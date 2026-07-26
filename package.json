@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
+    "@google/genai": "^2.13.0",
     "@mermaid-js/layout-elk": "^0.2.2",
     "@payloadcms/db-vercel-postgres": "^3.86.0",
     "@payloadcms/next": "^3.86.0",

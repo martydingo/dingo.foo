@@ -155,11 +155,11 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 function ProjectCardContent({ project }: { project: Project }) {
   return (
-    <div className="text-start h-fit p-4 absolute bottom-0 font-sans z-100 backdrop-blur-2xl backdrop-brightness-90">
+    <div className="text-start h-fit p-4 absolute bottom-0 font-sans z-100 backdrop-blur-2xl backdrop-brightness-90 w-full">
       <motion.p className="font-serif font-semibold text-xs pb-4">
         Created {new Date(project.date).toLocaleDateString()}
       </motion.p>
-      <motion.p>
+      <motion.p className="typeset typeset-docs text-sm text-balance mx-auto w-full text-center">
         {project.summary}
       </motion.p>
     </div>

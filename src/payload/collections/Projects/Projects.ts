@@ -1,5 +1,10 @@
+import autoTag from "@/payload/hooks/autoTag";
+import { convertLexicalToMarkdown, editorConfigFactory } from "@payloadcms/richtext-lexical";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { CollectionConfig } from "payload";
 import { array, slugify } from "payload/shared";
+import config from '@payload-config'
+import { GoogleGenAI } from "@google/genai";
 
 const Projects: CollectionConfig = {
     slug: "projects",
@@ -62,12 +67,70 @@ const Projects: CollectionConfig = {
             ]
         },
         {
+            name: "tags",
+            label: "Tags",
+            type: "array",
+            fields: [
+                {
+                    name: "tag",
+                    label: "Tag",
+                    type: "text"
+                }
+            ]
+        },
+        {
             name: "content",
             label: "Content",
             type: "richText"
         }
     ],
     hooks: {
+        beforeChange: [
+            async ({ data, req }) => {
+
+                const payloadConfig = await config
+                const content: SerializedEditorState = data.content
+                const markdown = convertLexicalToMarkdown({
+                    data: content,
+                    editorConfig: await editorConfigFactory.default({
+                        config: payloadConfig, // <= make sure you have access to your Payload Config
+                    })
+                })
+
+                const ai = new GoogleGenAI({ apiKey: process.env["GOOGLE_GEMINI_API_KEY"] })
+
+                if (data.tags.length === 0) {
+                    const autoTagResult = await ai.interactions.create({
+                        model: "gemini-3.6-flash",
+                        input: `Return ONLY a JSON array of 5-10 lowercase kebab-case tags for this content: ${markdown}`,
+                    })
+
+                    const parsedTagArray: string[] = JSON.parse(autoTagResult.output_text)
+                    const tags = parsedTagArray.map((tag) => { return { tag: tag } })
+
+                    data.tags = tags
+                }
+
+                if (!data.category) {
+                    const autoCategoryResult = await ai.interactions.create({
+                        model: "gemini-3.6-flash",
+                        input: `Return ONLY a single word that denotes the category for this content: ${markdown}`,
+                    })
+                    data.category = autoCategoryResult.output_text
+                }
+
+                if (!data.summary) {
+
+                    const autoSummaryResult = await ai.interactions.create({
+                        model: "gemini-3.6-flash",
+                        input: `Return a brief summary, three lines MAXIMUM, that summarises this content: ${markdown}`,
+                    })
+                    data.summary = autoSummaryResult.output_text
+                }
+
+                return data
+            }
+        ],
         beforeValidate: [
             ({ data }) => {
                 if (data?.title && !data.id) {

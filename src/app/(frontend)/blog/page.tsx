@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import Link from 'next/link'
+import BlogBento from '@/components/Blog/BlogPost/BlogBento/BlogBento'
 
 
 export default async function Blog() {
@@ -9,7 +10,7 @@ export default async function Blog() {
 
     return (
         <div>
-            {blog.docs.map((blogPost) => <Link href={`/blog/${blogPost.id}`}>{blogPost.title}</Link>)}
+            <BlogBento blog={blog.docs} />
         </div>
     )
 }
