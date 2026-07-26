@@ -37,7 +37,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/app/(frontend)/to-markdown/page.tsx.disabled",
+    "src/app/(frontend)/to-markdown/deploying-esxi.tsx.disabled"
   ],
   "exclude": [
     "node_modules"

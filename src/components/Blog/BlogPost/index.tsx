@@ -41,7 +41,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
                     <p>Authored {new Date(blog.createdAt!).toLocaleDateString()}</p>
                 </div>
             </div>
-            <Content content={blog.content!} />
+            <Content post={blog} />
             {/* <div className='max-w-2xl md:max-w-5xl mx-auto' dangerouslySetInnerHTML={{ "__html": blogContentHtml }} /> */}
             {/* <ProgressiveBlur className='fixed rounded-t-full' height="16%" position="bottom" /> */}
         </article>

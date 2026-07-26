@@ -28,8 +28,8 @@ export default function BlogBento({ blog, className }: { blog: Blog[], className
                     key={index}
                     title={blogItem.title}
                     description={blogItem.description}
-                    header={blogItem.img && <img className={cn(index % 2 === 0 && index !== 0 ? "h-36" : index === 0 ? "h-40" : "h-24", "object-cover")} src={blogItem.img.url} alt={blogItem.img['alt-text']} />}
-                    icon={IconfiyIcon({ iconName: blogItem.icon })}
+                    header={blogItem.img && <img className={cn(index % 2 === 0 && index !== 0 ? "h-36" : index === 0 ? "h-40" : "h-24", "object-cover")} src={blogItem.img.url!} alt={blogItem.img['alt-text']} />}
+                    icon={IconfiyIcon({ iconName: blogItem.icon && blogItem.icon || "" })}
                     className={cn(index % 2 === 0 && index !== 0 ? "md:col-span-2" : index === 0 ? "md:col-span-3" : "")}
                     href={`/blog/${blogItem.id}`}
                 // className={cn(index % 2 === 0 && index !== 0 ? "aspect-video h-40" : index === 0 ? "aspect-square h-24" : "")}

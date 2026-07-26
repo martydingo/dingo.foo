@@ -24,7 +24,7 @@ const htmlConverters: HTMLConvertersFunction<NodeTypes> = ({
   ...defaultConverters,
   blocks: {
     // Each key should match your block's slug
-    Code: ({ node }) =>
+    Code: ({ node }: { node: SerializedBlockNode }) =>
       `<pre id="${node.fields.blockName}" class="${node.fields.language}"><code>${node.fields.code}</code></pre>`,
   },
   inlineBlocks: {

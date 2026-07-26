@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Mermaid, type MermaidConfig } from "@/components/mermaidcn/mermaid";
+import { Mermaid } from "@/components/mermaidcn/mermaid";
 import { ZoomPan } from "@/components/mermaidcn/zoom-pan";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { MermaidConfig } from "mermaid";
 
 export interface MermaidPreviewProps {
     chart: string;

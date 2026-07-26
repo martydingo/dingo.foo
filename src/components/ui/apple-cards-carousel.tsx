@@ -5,6 +5,7 @@ import React, {
   useState,
   createContext,
   useContext,
+  JSX,
 } from "react";
 import {
   IconArrowNarrowLeft,
@@ -13,9 +14,9 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { Project } from "../../../payload-types";
+import { Image, Project } from "../../../payload-types";
+import { ImageProps } from "next/image";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -157,7 +158,7 @@ function ProjectCardContent({ project }: { project: Project }) {
   return (
     <div className="text-start h-fit p-4 absolute bottom-0 font-sans z-100 backdrop-blur-2xl backdrop-brightness-90 w-full">
       <motion.p className="font-serif font-semibold text-xs pb-4">
-        Created {new Date(project.date).toLocaleDateString()}
+        Created {new Date(project.date!).toLocaleDateString()}
       </motion.p>
       <motion.p className="typeset typeset-docs text-sm text-balance mx-auto w-full text-center line-clamp-2 md:line-clamp-3 lg:line-clamp-4 xl:line-clamp-none">
         {project.summary}
@@ -197,11 +198,10 @@ export const Card = ({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  useOutsideClick(containerRef, () => handleClose());
-
   const handleOpen = () => {
     setOpen(true);
   };
+  const projectImage = project.image as Image
 
   const handleClose = () => {
     setOpen(false);
@@ -217,7 +217,7 @@ export const Card = ({
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-8">
           <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
+            layoutId={layout ? `category-${project.category}` : undefined}
             className="text-left font-mono text-sm font-medium text-white md:text-base"
           >
             {project.category}
@@ -234,8 +234,8 @@ export const Card = ({
         <ProjectCardContent project={project} />
 
         <BlurImage
-          src={project.image && project.image.url!}
-          alt={project.title}
+          src={projectImage.url || ""}
+          alt={project.title!}
           fill
           className="absolute inset-0 z-10 object-cover object-top"
         />

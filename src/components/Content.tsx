@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import mermaidConfig from "./mermaidcn/mermaid-config"
 import Code from "./Code/Code"
 import halcyonTheme from "./Code/halcyon-color-theme.json"
-import { Blog, type Project } from "../../payload-types"
+import { Blog, Image, type Project } from "../../payload-types"
 import { Spotlight } from "./ui/spotlight-new"
 import { ScrollProgress } from "./ui/scroll-progress"
 import "iconify-icon";
@@ -40,7 +40,7 @@ function ContentRenderer({ content }: { content: SerializedEditorState }) {
 }
 
 export default function Content({ post }: { post: Project | Blog }) {
-    const postImage = post.image && post.image
+    const postImage = post.image as Image
     console.log(postImage)
     return (
         <article className='typeset typeset-docs mt-8 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl mx-auto'>
@@ -49,15 +49,15 @@ export default function Content({ post }: { post: Project | Blog }) {
             {/* <NextImage loading='eager' className={`mx-auto`} src={postImage.url!} height={postImage.height!} width={postImage.width!} alt={postImage['alt-text']} /> */}
 
             <div className="relative w-fullpb-4">
-                <NextImage loading='eager' className="w-full h-96 object-cover rounded-2xl" src={postImage && postImage.url!} height={postImage && postImage.height / 2} width={postImage && postImage.width! / 2} alt={postImage && postImage['alt-text']} />
+                <NextImage loading='eager' className="w-full h-96 object-cover rounded-2xl" src={postImage && postImage.url!} height={postImage && postImage.height! / 2} width={postImage && postImage.width! / 2} alt={postImage && postImage['alt-text']} />
                 <div className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur backdrop-brightness-50 rounded-2xl">
                     <h1 className='text-center text-4xl'>{post.title}</h1>
                     <div className="w-full flex items-center gap-8 justify-evenly py-4">
 
-                        {post.icons.length > 0 && (
+                        {post.icons!.length > 0 && (
                             <><p className="text-lg font-semibold ">Technologies Used</p>
                                 <div className="flex pt-8 h-16 gap-16 items-center justify-center">
-                                    {post.icons?.map((icon) => <Backlight blur={10}><iconify-icon style={{ fontSize: 48 }} icon={icon.icon}> </iconify-icon></Backlight>)}
+                                    {post.icons?.map((icon) => <Backlight blur={10}><iconify-icon style={{ fontSize: 48 }} icon={icon.icon!}> </iconify-icon></Backlight>)}
                                 </div>
                             </>
                         )}

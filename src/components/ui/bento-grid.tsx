@@ -55,5 +55,5 @@ export const BentoGridItem = ({
         </div>
       </Link>
     </div>
-  )
+  );
 };

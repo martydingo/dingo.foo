@@ -44,3 +44,5 @@ next-env.d.ts
 flake.lock
 bun.lock
 public
+
+*.disabled

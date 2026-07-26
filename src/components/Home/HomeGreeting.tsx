@@ -1,33 +1,39 @@
 'use client'
 
 import { PaginatedDocs } from "payload"
-import { Blog, Project } from "../../../payload-types"
+import { Blog, Image, Project } from "../../../payload-types"
 import { GlyphMatrix } from "../ui/glyph-matrix"
 import { KineticText } from "../ui/kinetic-text"
 import { TextFlippingBoard } from "../ui/text-flipping-board"
 import HomeFlipCard from "./HomeFlipCard"
 import { HeroParallax } from "../ui/hero-parallax"
 
-export default function HomeGreeting({ siteContent }: { siteContent: Blog[] | Project[] }) {
-    const contentMedia: { title: string, href: string, thumbnail: string }[] = []
-    console.log(siteContent)
+interface siteContent extends Blog, Project {
+    collection: string
+}
+
+export default function HomeGreeting({ siteContent }: { siteContent: siteContent[] }) {
+    const contentMedia: { title: string, link: string, thumbnail: string }[] = []
+
     siteContent.forEach((post) => {
         post.content!.root.children.forEach((childNode) => {
             if (childNode.type = "upload") {
                 if (childNode.value) {
+                    const thumbnailDict = childNode.value as { url: string }
                     contentMedia.push({
                         title: post.title!,
                         link: `/${post.collection}/${post.id}`,
-                        thumbnail: childNode.value && childNode.value.url
+                        thumbnail: childNode.value && thumbnailDict.url
                     })
                 }
             }
         })
         if (post.image) {
+            const postImage = post.image as Image
             contentMedia.push({
                 "title": post.title!,
-                "href": `/${post.collection}/${post.id}`,
-                "thumbnail": post.image!.url
+                "link": `/${post.collection}/${post.id}`,
+                "thumbnail": postImage.url as string
             })
         }
     })

@@ -4,6 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { mermaidThemes, type MermaidCustomTheme } from "@/lib/mermaid-themes";
 import elkLayouts from '@mermaid-js/layout-elk';
+import { MermaidConfig } from "mermaid";
 /* -------------------------------------------------------------------------------------------------
  * Types
  * -----------------------------------------------------------------------------------------------*/
@@ -38,29 +39,29 @@ const BUILTIN_THEMES = new Set<string>([
   "redux-dark-color",
 ]);
 
-export interface MermaidConfig {
-  theme?: MermaidTheme;
-  darkMode?: boolean;
-  look?: "classic" | "handDrawn" | "neo" | undefined;
-  themeVariables?: Record<string, string>;
-  flowchart?: {
-    curve?: "linear" | "cardinal";
-    padding?: number;
-    htmlLabels?: boolean;
-  };
-  sequence?: {
-    diagramMarginX?: number;
-    diagramMarginY?: number;
-    actorMargin?: number;
-    width?: number;
-    height?: number;
-    boxMargin?: number;
-    useMaxWidth?: boolean;
-  };
-  fontFamily?: string;
-  fontSize?: number;
-  logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "fatal";
-}
+// export interface MermaidConfig {
+//   theme?: MermaidTheme;
+//   darkMode?: boolean;
+//   look?: "classic" | "handDrawn" | "neo" | undefined;
+//   themeVariables?: Record<string, string>;
+//   flowchart?: {
+//     curve?: "linear" | "cardinal";
+//     padding?: number;
+//     htmlLabels?: boolean;
+//   };
+//   sequence?: {
+//     diagramMarginX?: number;
+//     diagramMarginY?: number;
+//     actorMargin?: number;
+//     width?: number;
+//     height?: number;
+//     boxMargin?: number;
+//     useMaxWidth?: boolean;
+//   };
+//   fontFamily?: string;
+//   fontSize?: number;
+//   logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "fatal";
+// }
 
 export interface MermaidProps {
   chart: string;

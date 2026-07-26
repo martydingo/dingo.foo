@@ -105,7 +105,7 @@ const Projects: CollectionConfig = {
                         input: `Return ONLY a JSON array of 5-10 lowercase kebab-case tags for this content: ${markdown}`,
                     })
 
-                    const parsedTagArray: string[] = JSON.parse(autoTagResult.output_text)
+                    const parsedTagArray: string[] = JSON.parse(autoTagResult.output_text!)
                     const tags = parsedTagArray.map((tag) => { return { tag: tag } })
 
                     data.tags = tags

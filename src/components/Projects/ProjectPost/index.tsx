@@ -9,7 +9,7 @@ import { Spotlight } from '@/components/ui/spotlight-new';
 import { Backlight } from '@/components/ui/backlight';
 
 export default function ProjectPost({ project }: { project: Project }) {
-    const projectContentHtml = convertLexicalToHTML({ data: project.content })
+    const projectContentHtml = convertLexicalToHTML({ data: project.content! })
     const projectImage = project.image as Image
     return (
         <article className='typeset typeset-docs mt-8'>
