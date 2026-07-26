@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ['latin'], variable: '--font-bai-jamjuree', weight: ["200", "300", "400", "500", "600", "700"]
@@ -40,6 +42,8 @@ export default async function RootLayout({
         <NavBar siteLogoUri={siteImageUri || ""} />
         {children}
       </body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }
