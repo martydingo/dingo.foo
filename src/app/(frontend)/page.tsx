@@ -3,6 +3,8 @@ import HomeGreeting from "@/components/Home/HomeGreeting";
 import config from '@payload-config'
 import { getPayload } from 'payload'
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const payload = await getPayload({ config })
   // const siteContent = []

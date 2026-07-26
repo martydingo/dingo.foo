@@ -41,7 +41,6 @@ function ContentRenderer({ content }: { content: SerializedEditorState }) {
 
 export default function Content({ post }: { post: Project | Blog }) {
     const postImage = post.image as Image
-    console.log(postImage)
     return (
         <article className='typeset typeset-docs mt-8 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl mx-auto'>
             <ScrollProgress className="top-0 fixed" />

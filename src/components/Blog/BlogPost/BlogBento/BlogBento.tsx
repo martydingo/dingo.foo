@@ -11,7 +11,6 @@ const IconfiyIcon = ({ iconName }: { iconName: string }) => <iconify-icon style=
 export default function BlogBento({ blog, className }: { blog: Blog[], className?: string }) {
     const blogItems = blog.map((blogPost) => {
         const blogImg = blogPost.image as Image
-        console.log(blogImg)
         return {
             title: blogPost.title,
             description: blogPost.summary,

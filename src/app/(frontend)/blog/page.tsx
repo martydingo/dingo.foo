@@ -3,6 +3,7 @@ import config from '@payload-config'
 import BlogBento from '@/components/Blog/BlogPost/BlogBento/BlogBento'
 import Footer from '@/components/Footer'
 
+export const dynamic = 'force-dynamic';
 
 export default async function Blog() {
     const payload = await getPayload({ config })

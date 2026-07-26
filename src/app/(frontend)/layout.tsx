@@ -15,6 +15,7 @@ const titiliumWeb = Titillium_Web({
 });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' });
 
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "dingo.foo",

@@ -6,6 +6,7 @@ import { Carousel } from '@/components/ui/apple-cards-carousel'
 import ProjectShowcase from '@/components/Projects/ProjectShowcase'
 import Footer from '@/components/Footer'
 
+export const dynamic = 'force-dynamic';
 
 export default async function Projects() {
     const payload = await getPayload({ config })

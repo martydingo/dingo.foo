@@ -180,7 +180,6 @@ const Blog: CollectionConfig = {
                     // const imgFile = fs.readFileSync("./preview_image.png")
 
 
-                    console.log(data)
                     // const autoImageResult = await ai.interactions.create({
                     //     model: "gemini-2.5-flash-image",
                     //     input: `Create a preview image for the following content ${markdown}`
