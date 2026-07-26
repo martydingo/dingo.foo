@@ -38,7 +38,7 @@ export default function HomeGreeting({ siteContent }: { siteContent: Blog[] | Pr
             <div className="basis-1/2 flex flex-col items-start">
                 {/* <KineticText className="ml-16" text="Now Engineering" as="h1" /> */}
                 {/* <HomeFlipCard heroMessages={heroMessages!} /> */}
-                <HeroParallax products={contentMedia} />;
+                <HeroParallax products={contentMedia} />
             </div>
             <div>
                 {/* <NoiseTexture className="col-span-1 col-start-2 mask-[radial-gradient(420px_circle_at_center,white,transparent)]" /> */}

@@ -1,7 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import Link from 'next/link'
 import BlogBento from '@/components/Blog/BlogPost/BlogBento/BlogBento'
+import Footer from '@/components/Footer'
 
 
 export default async function Blog() {
@@ -9,8 +9,11 @@ export default async function Blog() {
     const blog = await payload.find({ collection: "blog" })
 
     return (
-        <div>
-            <BlogBento blog={blog.docs} />
+        <div className='mt-8 lg:mt-16 flex flex-col lg:min-h-[88vh] justify-between'>
+            <BlogBento className='' blog={blog.docs} />
+            <div className='w-full mt-8 lg:mt-0'>
+                <Footer />
+            </div>
         </div>
     )
 }

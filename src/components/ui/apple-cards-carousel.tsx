@@ -159,7 +159,7 @@ function ProjectCardContent({ project }: { project: Project }) {
       <motion.p className="font-serif font-semibold text-xs pb-4">
         Created {new Date(project.date).toLocaleDateString()}
       </motion.p>
-      <motion.p className="typeset typeset-docs text-sm text-balance mx-auto w-full text-center">
+      <motion.p className="typeset typeset-docs text-sm text-balance mx-auto w-full text-center line-clamp-2 md:line-clamp-3 lg:line-clamp-4 xl:line-clamp-none">
         {project.summary}
       </motion.p>
     </div>

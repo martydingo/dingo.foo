@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import HomeGreeting from "@/components/Home/HomeGreeting";
 import config from '@payload-config'
 import { getPayload } from 'payload'
@@ -16,6 +17,9 @@ export default async function Home() {
 
     <main className="h-full">
       <HomeGreeting siteContent={siteContent} />
+      <div className='w-full mt-8 lg:mt-0'>
+        <Footer />
+      </div>
     </main>
 
   );

@@ -1,29 +1,39 @@
 "use client"
 
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { Blog } from "../../../../../payload-types";
+import { Blog, Image } from "../../../../../payload-types";
 import "iconify-icon";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-export default function BlogBento({ blog }: { blog: Blog[] }) {
+const IconfiyIcon = ({ iconName }: { iconName: string }) => <iconify-icon style={{ fontSize: 32 }} icon={iconName}></iconify-icon>
+
+export default function BlogBento({ blog, className }: { blog: Blog[], className?: string }) {
     const blogItems = blog.map((blogPost) => {
+        const blogImg = blogPost.image as Image
+        console.log(blogImg)
         return {
             title: blogPost.title,
             description: blogPost.summary,
-            header: blogPost.image && <Image src={blogPost.image.url} alt={blogPost.image.alt} />,
-            icon: blogPost.icons?.length > 0 && <iconify-icon icon={blogPost.icons[0].icon}></iconify-icon>
+            // header: 
+            img: blogImg,
+            icon: blogPost.icons && blogPost.icons?.length > 0 && blogPost.icons[0].icon,
+            id: blogPost.id
         }
     })
     return (
-        <BentoGrid>
+        <BentoGrid className={className}>
             {blogItems.map((blogItem, index) =>
                 <BentoGridItem
                     key={index}
                     title={blogItem.title}
                     description={blogItem.description}
-                    icon={blogItem.icon}
-                    className={index % 3 === 0 ? "md:col-span-2" : ""}
+                    header={blogItem.img && <img className={cn(index % 2 === 0 && index !== 0 ? "h-36" : index === 0 ? "h-40" : "h-24", "object-cover")} src={blogItem.img.url} alt={blogItem.img['alt-text']} />}
+                    icon={IconfiyIcon({ iconName: blogItem.icon })}
+                    className={cn(index % 2 === 0 && index !== 0 ? "md:col-span-2" : index === 0 ? "md:col-span-3" : "")}
+                    href={`/blog/${blogItem.id}`}
+                // className={cn(index % 2 === 0 && index !== 0 ? "aspect-video h-40" : index === 0 ? "aspect-square h-24" : "")}
                 />
-
             )}
         </BentoGrid>
     )

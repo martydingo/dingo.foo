@@ -36,18 +36,18 @@ pre code {
   --font-mono: var(--font-jetbrains-mono);
 
   --radius: 0.625rem;
-
+  --dim: #171c28;
   /* Base surfaces */
-  --background: #171c28;
+  --background: #1d2433;
   /* Background_1 */
   --foreground: #d7dce2;
   /* White */
 
-  --card: #1d2433;
+  --card: #2f3b54;
   /* Background_2 */
   --card-foreground: #d7dce2;
 
-  --popover: #1d2433;
+  --popover: #2f3b54;
   /* Background_2 */
   --popover-foreground: #d7dce2;
 

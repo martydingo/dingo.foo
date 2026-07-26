@@ -105,7 +105,7 @@ const Blog: CollectionConfig = {
                         input: `Return ONLY a JSON array of 5-10 lowercase kebab-case tags for this content: ${markdown}`,
                     })
 
-                    const parsedTagArray: string[] = JSON.parse(autoTagResult.output_text)
+                    const parsedTagArray: string[] = JSON.parse(autoTagResult.output_text!)
                     const tags = parsedTagArray.map((tag) => { return { tag: tag } })
 
                     data.tags = tags
@@ -128,15 +128,17 @@ const Blog: CollectionConfig = {
                     data.summary = autoSummaryResult.output_text
                 }
 
+
                 if (!data.image) {
                     const promptData = {
-                        prompt: `Create a preview image for the following content ${markdown}`,
-                        // num_steps: 4,
+                        prompt: `Create a preview image suitable for use on a blog for a post with the following title ${data.title}, and the following content: ${markdown}\nDo NOT generate text on the image.`,
+                        num_steps: 4,
                         height: 1024,
                         width: 1024
                     }
                     // You can choose models like 'flux' or 'turbo' directly in the URL
-                    const url = 'https://gateway.pixazo.ai/getImage/v1/getSDXLImage';
+                    // const url = 'https://gateway.pixazo.ai/getImage/v1/getSDXLImage';
+                    const url = 'https://gateway.pixazo.ai/flux-1-schnell/v1/getData';
                     const headers = {
                         'Content-Type': 'application/json',
                         'Cache-Control': 'no-cache',
@@ -147,17 +149,38 @@ const Blog: CollectionConfig = {
                         const genResponse = await fetch(url, { method: "POST", headers: headers, body: JSON.stringify(promptData) })
                         if (!genResponse.ok) throw new Error(`HTTP error! status: ${await genResponse.text()}`);
                         const fetchUrl = await genResponse.json()
-                        const fetchResponse = await fetch(fetchUrl.imageUrl)
+                        // const fetchResponse = await fetch(fetchUrl.imageUrl)
+                        const fetchResponse = await fetch(fetchUrl.output)
                         const arrayBuffer = await fetchResponse.arrayBuffer();
-                        const buffer = Buffer.from(arrayBuffer);
+                        const imgFile = Buffer.from(arrayBuffer);
 
-                        fs.writeFileSync('./preview_image.png', buffer);
+                        // fs.writeFileSync('./preview_image.png', buffer);
 
-                        data.image = buffer
+                        data.image = imgFile
+
+                        const imgMeta = await req.payload.create({
+                            collection: "images",
+                            data: {
+                                "alt-text": `${data.title} Preview Image`
+                            },
+                            file: {
+                                data: imgFile,
+                                mimetype: 'image/png',
+                                name: slugify(`${data.title} Preview Image`)!,
+                                size: imgFile.length
+                            },
+                            req
+                        })
+
+                        data.image = imgMeta.id
 
                     } catch (error) {
                         console.error('Download failed:', error);
                     }
+                    // const imgFile = fs.readFileSync("./preview_image.png")
+
+
+                    console.log(data)
                     // const autoImageResult = await ai.interactions.create({
                     //     model: "gemini-2.5-flash-image",
                     //     input: `Create a preview image for the following content ${markdown}`

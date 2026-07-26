@@ -57,9 +57,14 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] xl:h-[275vh] w-screen py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+    // className="h-[280vh] lg:h-[200vh] md:h-[500vh] xl:h-[275vh] w-screen py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+
     >
-      <Header />
+      <div className="max-w-sm md:max-w-none">
+
+        <Header />
+      </div>
       <motion.div
         style={{
           rotateX,
@@ -103,22 +108,22 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white font-mono">
+    <div className="md:max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-8 xl:left-0 top-0">
+      <h1 className="text-2xl md:text-5xl xl:text-7xl font-bold text-primary font-mono">
         An engineer of<br /> all the things
       </h1>
-      <p className="ml-2 max-w-2xl text-base md:text-xl mt-8">
+      <p className="md:ml-2 max-w-2xl text-base md:text-xl mt-8">
         Helping to build the backbone of the internet, one commit at a time.
         <br />
-        <span className="ml-4">
+        <span className="md:ml-4">
           I've constructed global DNS systems, kept national ISPs running
         </span>
         <br />
-        <span className="ml-6">
+        <span className="md:ml-6">
           and written more backend glue than I can remember.
         </span>
         <br />
-        <span className="ml-10">If it's critical infrastructure, I'm probably obsessed with it.</span>
+        <span className="md:ml-10">If it's critical infrastructure, I'm probably obsessed with it.</span>
       </p>
     </div>
   );
