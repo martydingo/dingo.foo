@@ -46,3 +46,4 @@ bun.lock
 public
 
 *.disabled
+start.sh
