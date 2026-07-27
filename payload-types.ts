@@ -247,6 +247,37 @@ export interface HomeConfig {
 export interface User {
   id: number;
   name: string;
+  'profile-picture'?: (string | null) | Image;
+  socials?:
+    | {
+        icon?: string | null;
+        title?: string | null;
+        handle?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  summary?: string | null;
+  history?:
+    | {
+        year?: number | null;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -447,6 +478,23 @@ export interface HomeConfigSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  'profile-picture'?: T;
+  socials?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        handle?: T;
+        id?: T;
+      };
+  summary?: T;
+  history?:
+    | T
+    | {
+        year?: T;
+        content?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   email?: T;

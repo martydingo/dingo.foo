@@ -24,9 +24,9 @@ const siteNavLinks: { href: string, title: string, description: string }[] = [
         description: "Some of my more technical scribblings and scratchings, which are definitely still scribbles and scratches."
     },
     {
-        href: "/socials",
-        title: "Socials",
-        description: "Sometimes, you just want a chat."
+        href: "/about",
+        title: "About",
+        description: "Want to know more about me, my professional experiences and or my contributions? Or you just want to get in touch? Figure that out all here!"
     },
     {
         href: "/admin",

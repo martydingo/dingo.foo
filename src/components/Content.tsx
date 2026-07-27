@@ -35,7 +35,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
     },
 })
 
-function ContentRenderer({ content }: { content: SerializedEditorState }) {
+export function ContentRenderer({ content }: { content: SerializedEditorState }) {
     return <RichText converters={jsxConverters} data={content} />
 }
 
