@@ -33,6 +33,18 @@ const nextConfig: NextConfig = {
         port: '3000', // Match your Payload CMS port
         pathname: '/api/images/file/**',
       },
+      {
+        protocol: 'https',
+        hostname: '**.vercel.app',
+        port: '443', // Match your Payload CMS port
+        pathname: '/api/images/file/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.dingo.foo',
+        port: '443', // Match your Payload CMS port
+        pathname: '/api/images/file/**',
+      },
     ],
   },
 };
