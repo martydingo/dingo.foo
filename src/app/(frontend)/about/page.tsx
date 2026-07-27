@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import HistoryTimeline from '@/components/About/HistoryTimeline';
+import HistoryTimeline, { TimelineHistory } from '@/components/About/HistoryTimeline';
 import Footer from '@/components/Footer';
 import Socials from '@/components/About/Socials';
 import NextImage from 'next/image';
@@ -40,7 +40,7 @@ export default async function Social() {
                 </div>
             </div>
             <div>
-                <HistoryTimeline history={primaryUser.history!} summary={primaryUser.summary!} />
+                <HistoryTimeline history={primaryUser.history as TimelineHistory[]} summary={primaryUser.summary!} />
             </div>
             <div>
                 <Footer />

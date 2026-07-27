@@ -24,13 +24,13 @@ export default function Socials({ socials }: {
                     {handleIsHyperlink ?
                         <Link className="flex gap-2 items-center justify-center" href={socialEntry.handle!}>
                             <Backlight blur={5}>
-                                <iconify-icon style={{ fontSize: 48 }} icon={socialEntry.icon} />
+                                <iconify-icon style={{ fontSize: 48 }} icon={socialEntry.icon!} />
                             </Backlight>
                             <p className="pb-5">{socialEntry.title}</p>
                         </Link>
                         : <>
                             <Backlight blur={5}>
-                                <iconify-icon style={{ fontSize: 48 }} icon={socialEntry.icon} />
+                                <iconify-icon style={{ fontSize: 48 }} icon={socialEntry.icon!} />
                             </Backlight>
                             <p>{socialEntry.title}</p>
                         </>
