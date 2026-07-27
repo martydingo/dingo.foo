@@ -18,9 +18,9 @@ export default async function Social() {
 
     return (
         <div className='typeset typeset-docs'>
-            <div className='pt-20 px-4 md:px-8 lg:px-10 max-w-7xl mx-auto flex'>
-                <div className='max-w-sm'>
-                    <h1>Hey there, I'm {primaryUser.name}!</h1>
+            <div className='pt-20 px-4 md:px-8 lg:px-10 max-w-7xl mx-auto flex flex-col-reverse md:flex-row'>
+                <div className='max-w-sm text-sm md:text-base'>
+                    <h1 className='text-center'>Hey there, I'm {primaryUser.name}!</h1>
                     <p>This might be slightly arduous, but it's an about me section! These things tend to be a little tedious but it may be worthwhile if you're reading this.</p>
                     <Socials socials={primaryUser.socials!} />
                 </div>
@@ -33,7 +33,7 @@ export default async function Social() {
                         animationStyle="fade"
                         animationDuration={1.5}
                         animateOnView={false}
-                        className="mx-auto aspect-square rounded-xl w-full max-w-lg bg-neutral-950"
+                        className="mx-auto aspect-square rounded-xl max-w-lg w-[300px] md:w-full"
                     />
 
                     {/* {<NextImage width={512} height={512} src={primaryUserProfilePicture && primaryUserProfilePicture.url} alt={primaryUserProfilePicture['alt-text']} />} */}

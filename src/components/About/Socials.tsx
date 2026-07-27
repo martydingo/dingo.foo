@@ -12,7 +12,7 @@ export default function Socials({ socials }: {
         id?: string | null | undefined;
     }[]
 }) {
-    return (<div className="w-fit">
+    return (<div className="w-full">
         <p>Here are some of my social contact points!</p>
         <div className="flex flex-col gap-4 pt-8 justify-center">
             {socials.map((socialEntry) => {

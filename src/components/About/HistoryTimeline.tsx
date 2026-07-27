@@ -13,7 +13,9 @@ export default function HistoryTimeline({ history, summary }: { history?: Timeli
     const timelineData = history!.map((historyEntry) => {
         return {
             title: historyEntry.year!.toString(),
-            content: <ContentRenderer content={historyEntry.content!} />
+            content: <div className="text-sm md:text-base">
+                <ContentRenderer content={historyEntry.content!} />
+            </div>
         }
     })
     return <Timeline data={timelineData} summary={summary!} />

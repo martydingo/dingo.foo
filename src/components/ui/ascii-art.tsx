@@ -323,7 +323,7 @@ export const AsciiArt: React.FC<AsciiArtProps> = ({
             } else if (matrixProgress < charProgress + 0.15) {
               displayChar =
                 MATRIX_CHARSET[
-                  Math.floor(Math.random() * MATRIX_CHARSET.length)
+                Math.floor(Math.random() * MATRIX_CHARSET.length)
                 ];
               displayColor = "#00ff00";
               ctx.shadowColor = "#00ff00";
