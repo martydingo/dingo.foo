@@ -16,7 +16,7 @@ pre code {
   --typeset-font-body: var(--font-titillium-web);
   --typeset-font-heading: var(--font-bai-jamjuree);
   --typeset-font-mono: var(--font-jetbrains-mono);
-  --typeset-size: 16px;
+  --typeset-size: 14px;
   --typeset-leading: 1.75;
   --typeset-flow: 1.25em;
 }

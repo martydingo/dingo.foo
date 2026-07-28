@@ -103,10 +103,10 @@ export const ProductItem = ({
         className="shrink-0 rounded-md shadow-2xl h-35"
       />
       <div className="p-2">
-        <h4 className="text-xl font-bold mb-1 text-foreground">
+        <h4 className="text-xl font-bold mb-1 text-foreground font-serif">
           {title}
         </h4>
-        <p className="text-sm max-w-40 h-32 text-muted-foreground">
+        <p className="text-sm max-w-40 h-32 text-muted-foreground font-sans">
           {description}
         </p>
       </div>

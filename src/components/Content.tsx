@@ -42,7 +42,7 @@ export function ContentRenderer({ content }: { content: SerializedEditorState })
 export default function Content({ post }: { post: Project | Blog }) {
     const postImage = post.image as Image
     return (
-        <article className='typeset typeset-docs mt-8 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl mx-auto'>
+        <article className='typeset typeset-docs mt-8 max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-5xl mx-auto md:text-base'>
             <ScrollProgress className="top-0 fixed" />
             {/* <Spotlight height={height} /> */}
             {/* <NextImage loading='eager' className={`mx-auto`} src={postImage.url!} height={postImage.height!} width={postImage.width!} alt={postImage['alt-text']} /> */}
@@ -55,8 +55,8 @@ export default function Content({ post }: { post: Project | Blog }) {
 
                         {post.icons!.length > 0 && (
                             <><p className="text-lg font-semibold ">Technologies Used</p>
-                                <div className="flex pt-8 h-16 gap-16 items-center justify-center">
-                                    {post.icons?.map((icon) => <Backlight blur={10}><iconify-icon style={{ fontSize: 48 }} icon={icon.icon!}> </iconify-icon></Backlight>)}
+                                <div className="flex flex-wrap pt-8 h-16 gap-4 items-center justify-center">
+                                    {post.icons?.map((icon) => <Backlight blur={10}><iconify-icon className="text-[24px] md:text-[48px]" icon={icon.icon!}> </iconify-icon></Backlight>)}
                                 </div>
                             </>
                         )}
@@ -73,7 +73,9 @@ export default function Content({ post }: { post: Project | Blog }) {
                     </div>
                 </div>
             </div>
-            <ContentRenderer content={post.content!} />
+            <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto">
+                <ContentRenderer content={post.content!} />
+            </div>
         </article>
     )
 }

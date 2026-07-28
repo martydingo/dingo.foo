@@ -71,7 +71,6 @@ export default function NavBar({ siteLogoUri }: { siteLogoUri?: string }) {
                 <MobileNav>
                     <MobileNavHeader>
                         <NavbarLogo siteLogoUri={siteLogoUri!} />
-                        <p className="font-bai-jamjuree tracking-wider text-2xl basis-2/5">dingo.foo</p>
                         <MobileNavToggle
                             isOpen={isMobileMenuOpen}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -84,7 +83,7 @@ export default function NavBar({ siteLogoUri }: { siteLogoUri?: string }) {
                     >
                         {Object.entries(siteNavLinks).map(([navCategory, navItems], idx) => (
                             <div>
-                                <p className="text-base font-semibold">{navCategory}</p>
+                                <p className="text-base font-semibold font-serif">{navCategory}</p>
                                 {idx !== Object.keys(siteNavLinks).length && <Separator className="my-1 bg-primary w-full" />}
 
                                 {navItems.map((item) => (
@@ -92,7 +91,7 @@ export default function NavBar({ siteLogoUri }: { siteLogoUri?: string }) {
                                         key={`mobile-link-${idx}`}
                                         href={item.link}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="relative text-sm indent-2"
+                                        className="relative text-base indent-4 font-sans hover:text-primary/80"
                                     >
                                         <span className="block">{item.name}</span>
                                     </a>
