@@ -20,22 +20,26 @@ const siteNavLinks: { [key: string]: { link: string, name: string, description: 
         {
             link: "/projects",
             name: "Projects",
-            description: "A collection of things I've created, written, contributed to, or worked on. Or things I've simply just broke."
+            description: "A collection of things I've created, written, contributed to, or worked on. Or things I've simply just broke.",
+            img: "/api/images/file/icon-projects.svg"
         },
         {
             link: "/blog",
             name: "Blog",
-            description: "Some of my more technical scribblings and scratchings, which are definitely still scribbles and scratches."
+            description: "Some of my more technical scribblings and scratchings, which are definitely still scribbles and scratches.",
+            img: "/api/images/file/icon-blog.svg"
         },
         {
             link: "/about",
             name: "About",
-            description: "Want to know more about me, my professional experiences and or my contributions? Or you just want to get in touch? Figure that out all here!"
+            description: "Want to know more about me, my professional experiences and or my contributions? Or you just want to get in touch? Figure that out all here!",
+            img: "/api/images/file/icon-about.svg"
         },
         {
             link: "/admin",
             name: "Admin",
-            description: "You know, there needs to be some way to add content to this site"
+            description: "You know, there needs to be some way to add content to this site",
+            img: "/api/images/file/icon-admin.svg"
         }
     ],
     "Applications": [

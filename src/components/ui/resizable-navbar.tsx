@@ -119,7 +119,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex bg-transparent",
-        visible && "bg-primary-foreground/80",
+        visible && "bg-primary-foreground/90",
         className,
       )}
     >
@@ -135,7 +135,7 @@ export const NavItems = ({ items, className, onItemClick, active, setActive }: N
     <motion.div
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2",
+        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-muted transition duration-200 hover:text-foreground lg:flex lg:space-x-2",
         className,
       )}
     >
@@ -145,7 +145,7 @@ export const NavItems = ({ items, className, onItemClick, active, setActive }: N
       (
         // <>
         <MenuItem setActive={setActive!} active={active} item={navCatKey}>
-          <div className="grid grid-cols-2 gap-10 p-4 text-sm"
+          <div className="grid grid-cols-2 gap-4 p-4 text-sm"
             onMouseLeave={() => setActive(null)}
           >
             {navCatLinks.map((item) => (
@@ -155,7 +155,6 @@ export const NavItems = ({ items, className, onItemClick, active, setActive }: N
                 description={item.description}
                 src={item.img && item.img}
               />
-
             ))}
           </div>
         </MenuItem>

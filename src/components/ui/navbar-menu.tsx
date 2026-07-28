@@ -2,12 +2,14 @@
 import React from "react";
 import { motion } from "motion/react";
 import { Button } from "./button";
+import Image from "next/image";
+import Link from "next/link";
 
 
 
 const transition = {
   type: "spring" as const,
-  mass: 0.5,
+  mass: 1,
   damping: 11.5,
   stiffness: 100,
   restDelta: 0.001,
@@ -73,7 +75,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
+      className="relative rounded-full border border-border shadow-input flex justify-center space-x-4 px-8 py-6 "
     >
       {children}
     </nav>
@@ -92,23 +94,23 @@ export const ProductItem = ({
   src?: string;
 }) => {
   return (
-    <a href={href} className="flex space-x-2 hover:bg-card/20 rounded-2xl">
-      <img
-        src={src}
-        width={140}
-        height={70}
+    <Link href={href} className="flex space-x-2 hover:bg-card/20 rounded-2xl items-center">
+      <Image
+        src={src!}
+        width={200}
+        height={200}
         alt={title}
-        className="shrink-0 rounded-md shadow-2xl"
+        className="shrink-0 rounded-md shadow-2xl h-35"
       />
-      <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+      <div className="p-2">
+        <h4 className="text-xl font-bold mb-1 text-foreground">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+        <p className="text-sm max-w-40 h-32 text-muted-foreground">
           {description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
