@@ -39,7 +39,9 @@ export default async function RootLayout({
     >
       {/* <body className="bg-linear-to-b from-sidebar from-35% to-background"> */}
       <body>
-        <NavBar siteLogoUri={siteImageUri || ""} />
+        <div className="sticky top-0 z-20">
+          <NavBar siteLogoUri={siteImageUri || ""} />
+        </div>
         {children}
       </body>
       <Analytics />

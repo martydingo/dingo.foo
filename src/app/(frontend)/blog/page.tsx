@@ -3,6 +3,7 @@ import config from '@payload-config'
 import BlogBento from '@/components/Blog/BlogPost/BlogBento/BlogBento'
 import Footer from '@/components/Footer'
 import { TagFilter } from '@/components/Blog/TagFilter';
+import BlogGrid from '@/components/Blog/BlogGrid/BlogGrid';
 
 export const dynamic = 'force-dynamic';
 
@@ -44,7 +45,7 @@ export default async function Blog({
                     tagCounts={tagCounts}
                 />
             </div>
-            <BlogBento className='' blog={filteredBlogs} />
+            <BlogGrid blogPosts={filteredBlogs} />
             <div className='w-full mt-8 lg:mt-0'>
                 <Footer />
             </div>
