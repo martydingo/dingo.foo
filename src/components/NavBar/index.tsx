@@ -47,7 +47,7 @@ const siteNavLinks: { [key: string]: { link: string, name: string, description: 
             link: "https://j2live.dingo.foo",
             name: "J2Live",
             description: ">J2Live is a web-based application that allows users to edit and render Jinja2 templates using YAML variables in real-time, using the Ansible templating engine.",
-            img: "/j2live_logo_square_halcyon.svg"
+            img: "/api/images/file/j2live_logo_square_halcyon.svg"
         }
     ]
 }
