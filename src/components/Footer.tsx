@@ -17,7 +17,7 @@ export default async function Footer() {
                     className="hover:text-text-neutral-800 flex list-none gap-4 text-neutral-600 transition-colors sm:flex-row dark:text-neutral-300">
                     <li className="list-none"><a className="hover:text-primary transition-colors" href="/blog">Blog</a></li>
                     <li className="list-none"><a className="hover:text-primary transition-colors" href="/projects">Projects</a></li>
-                    <li className="list-none"><a className="hover:text-primary transition-colors" href="/socials">Socials</a></li>
+                    <li className="list-none"><a className="hover:text-primary transition-colors" href="/about">About</a></li>
                     <li className="list-none"><a className="hover:text-primary transition-colors" href="/admin">Admin</a></li>
                 </ul>
             </div>
